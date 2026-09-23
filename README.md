@@ -20,6 +20,43 @@ Ter o Python instalado em sua máquina e a sua chave de API do Google configurad
 
 ### Passo a Passo
 
-1. *Abra a pasta do projeto no seu terminal ou VS Code:*
+1. *Clone o repositório e acesse a pasta do projeto:*
    ```bash
-   cd caminhos/para/projetos_IA
+   git clone https://github.com/Juliojuliano/gerador-posts-ia.git
+   cd gerador-posts-ia
+   ```
+
+2. *Instale as dependências:*
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. *Configure a chave de API do Gemini:*
+   O projeto usa a biblioteca `google-genai`, que lê a chave automaticamente da variável de ambiente `GEMINI_API_KEY`. Crie uma chave gratuita em [Google AI Studio](https://aistudio.google.com/app/apikey) e defina a variável antes de rodar:
+   ```bash
+   # Linux/macOS
+   export GEMINI_API_KEY="sua-chave-aqui"
+
+   # Windows (PowerShell)
+   $env:GEMINI_API_KEY="sua-chave-aqui"
+   ```
+
+4. *Execute o projeto.* Existem duas formas de uso:
+
+   - *Interface web (recomendada)*, com as abas de planilha em lote e chat:
+     ```bash
+     streamlit run app_web.py
+     ```
+     O app abrirá automaticamente no navegador em `http://localhost:8501`.
+
+   - *Versão de terminal*, que processa o `ideias_posts.csv` e depois abre um chat via linha de comando:
+     ```bash
+     python gerador_posts.py
+     ```
+
+### Formato do arquivo `ideias_posts.csv`
+O arquivo precisa ter as colunas `Tema` e `Publico`, uma linha por post desejado. Exemplo:
+```csv
+Tema,Publico
+Como a Inteligência Artificial está mudando o mercado de trabalho em 2026,Jovens profissionais e estudantes
+```
